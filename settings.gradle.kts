@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Shop"
 include(":app")
+include(":common:common_utils")
