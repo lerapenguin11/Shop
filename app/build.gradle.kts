@@ -60,4 +60,7 @@ dependencies {
     kapt(DaggerHilt.hiltAndroidCompiler)
     kapt(DaggerHilt.hiltCompiler)
     implementation(Coroutines.kotlin_stdlib)
+    api(Navigation.nav_features)
+    api(Navigation.nav_fragment)
+    api(Navigation.nav_ui)
 }

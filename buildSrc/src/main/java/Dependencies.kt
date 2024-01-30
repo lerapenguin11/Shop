@@ -35,8 +35,14 @@ object Versions {
     const val mockito_kotlin = "4.0.0"
     const val mockito_inline = "3.11.2"
     const val kotlin_stdlib = "1.9.10"
+    const val nav_version = "2.7.6"
 }
 
+object Navigation{
+    const val nav_fragment = "androidx.navigation:navigation-fragment-ktx:${Versions.nav_version}"
+    const val nav_ui = "androidx.navigation:navigation-ui-ktx:${Versions.nav_version}"
+    const val nav_features = "androidx.navigation:navigation-dynamic-features-fragment:${Versions.nav_version}"
+}
 object Libraries{
     const val leakcanary = "com.squareup.leakcanary:leakcanary-android:${Versions.leakcanary}"
     const val facebook_shimmer = "com.facebook.shimmer:shimmer:${Versions.facebook_shimmer}"

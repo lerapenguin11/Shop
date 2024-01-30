@@ -24,6 +24,20 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/common/common_utils" />
+            <option value="$PROJECT_DIR$/feature_auth" />
+            <option value="$PROJECT_DIR$/feature_auth/auth_data" />
+            <option value="$PROJECT_DIR$/feature_auth/auth_domain" />
+            <option value="$PROJECT_DIR$/feature_auth/auth_presentation" />
+            <option value="$PROJECT_DIR$/feature_basket" />
+            <option value="$PROJECT_DIR$/feature_basket/basket_presentation" />
+            <option value="$PROJECT_DIR$/feature_catalog" />
+            <option value="$PROJECT_DIR$/feature_catalog/catalog_presentation" />
+            <option value="$PROJECT_DIR$/feature_home" />
+            <option value="$PROJECT_DIR$/feature_home/home_presentation" />
+            <option value="$PROJECT_DIR$/feature_profile" />
+            <option value="$PROJECT_DIR$/feature_profile/profile_presentation" />
+            <option value="$PROJECT_DIR$/feature_stocks" />
+            <option value="$PROJECT_DIR$/feature_stocks/stocks_presentation" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
