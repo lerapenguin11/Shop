@@ -34,6 +34,7 @@ object Versions {
     const val mockito_core = "4.0.0"
     const val mockito_kotlin = "4.0.0"
     const val mockito_inline = "3.11.2"
+    const val kotlin_stdlib = "1.9.10"
 }
 
 object Libraries{
@@ -94,6 +95,7 @@ object Coroutines {
     const val lifecycle_livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}"
     const val kotlin_stdlib_jdk7 = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin_stdlib_jdk7}"
     const val kotlin_stdlib_jdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin_stdlib_jdk8}"
+    const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin_stdlib}"
 
 }
 
