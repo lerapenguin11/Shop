@@ -116,13 +116,14 @@
             android:layout_width="match_parent"
             android:layout_height="51dp"
             android:layout_marginTop="27dp"
-            android:background="@drawable/bg_buttom"
             android:enabled="false"
+            android:background="@drawable/bg_buttom"
             android:fontFamily="sans-serif-medium"
             android:text="@string/text_enter"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            app:backgroundTint="@null"/>
     </LinearLayout>
 
     <LinearLayout

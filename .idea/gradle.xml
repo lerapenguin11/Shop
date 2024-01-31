@@ -38,6 +38,7 @@
             <option value="$PROJECT_DIR$/feature_profile/profile_presentation" />
             <option value="$PROJECT_DIR$/feature_stocks" />
             <option value="$PROJECT_DIR$/feature_stocks/stocks_presentation" />
+            <option value="$PROJECT_DIR$/navigation" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

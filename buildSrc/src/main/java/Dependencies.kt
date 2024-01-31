@@ -34,7 +34,7 @@ object Versions {
     const val mockito_core = "4.0.0"
     const val mockito_kotlin = "4.0.0"
     const val mockito_inline = "3.11.2"
-    const val kotlin_stdlib = "1.9.10"
+    const val kotlin_stdlib = "1.7.21"/*1.9.10*/
     const val nav_version = "2.7.6"
 }
 

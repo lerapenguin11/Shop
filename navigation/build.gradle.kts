@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.auth_presentation"
+    namespace = "com.example.navigation"
     compileSdk = 34
 
     buildFeatures {
@@ -44,13 +44,11 @@ dependencies {
     implementation(Deps.core)
     implementation(Deps.appCompat)
     implementation(Deps.androidMaterial)
+    implementation(Deps.constraintLayout)
+    testImplementation(TestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.espresso)
     implementation(Deps.fragment)
-    api(Navigation.nav_features)
-    api(Navigation.nav_fragment)
-    api(Navigation.nav_ui)
-    implementation(Libraries.santalu_maskara)
     implementation(DaggerHilt.hilt)
     kapt(DaggerHilt.hiltAndroidCompiler)
     kapt(DaggerHilt.hiltCompiler)
