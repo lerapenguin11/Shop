@@ -1,59 +1,150 @@
 package com.example.auth_presentation
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import com.example.auth_presentation.databinding.FragmentAuthBinding
+import com.example.auth_presentation.viewmodel.AuthViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AuthFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AuthFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentAuthBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_auth, container, false)
+        _binding = FragmentAuthBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AuthFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AuthFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        editTextNameTextChangedListener()
+        editTextSurnameTextChangedListener()
+        editTextNumberPhoneTextChangedListener()
+
+    }
+
+    private fun editTextNumberPhoneTextChangedListener() {
+        binding.etInputNumberPhone.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                //TODO исправить проверку на телефон
+                if (s != null && s.trim().isNotBlank() && s.trim().length >= 17) {
+                    editTextCleanNumberPhone()
+                    checkInputText()
+                } else{
+                    setEnableFalse()
                 }
             }
+        })
+    }
+
+    private fun editTextSurnameTextChangedListener() {
+        val validPattern = "^[а-яА-Я]+$".toRegex()
+        binding.etInputSurname.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (s != null && s.trim().isNotBlank()) {
+                    editTextCleanSurname()
+                    if (!s.matches(validPattern)) {
+                        binding.etInputSurname.setBackgroundResource(R.drawable.bg_edittext_error)
+                        setEnableFalse()
+                    } else {
+                        binding.etInputSurname.setBackgroundResource(R.drawable.bg_edittext)
+                        checkInputText()
+                    }
+                }else{
+                    setEnableFalse()
+                }
+            }
+        })
+    }
+
+    private fun checkInputText() {
+        if (viewModel.validateInput(
+                inputName = binding.etInputName.text.toString(),
+                inputSurname = binding.etInputSurname.text.toString(),
+                inputNumberPhone = binding.etInputNumberPhone.text.toString()
+            )
+        ) {
+            enableBtEnter()
+        }
+    }
+
+    private fun setEnableFalse(){
+        binding.btEnter.isEnabled = false
+    }
+
+    private fun enableBtEnter() {
+        binding.btEnter.isEnabled = true
+        binding.btEnter.setOnClickListener {
+            Toast.makeText(requireContext(), "НАЖАЛИ", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun editTextNameTextChangedListener() {
+        val validPattern = "^[а-яА-Я]+$".toRegex()
+        binding.etInputName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (s != null && s.trim().isNotBlank()) {
+                    editTextCleanName()
+                    if (!s.matches(validPattern)) {
+                        binding.etInputName.setBackgroundResource(R.drawable.bg_edittext_error)
+                        setEnableFalse()
+                    } else {
+                        binding.etInputName.setBackgroundResource(R.drawable.bg_edittext)
+                        checkInputText()
+                    }
+                }else{
+                    setEnableFalse()
+                }
+            }
+        })
+    }
+
+    private fun editTextCleanName() {
+        binding.btnClearName.visibility = View.VISIBLE
+        binding.btnClearName.setOnClickListener {
+            binding.etInputName.text.clear()
+            binding.btnClearName.visibility = View.GONE
+        }
+    }
+
+    private fun editTextCleanSurname() {
+        binding.btnClearSurname.visibility = View.VISIBLE
+        binding.btnClearSurname.setOnClickListener {
+            binding.etInputSurname.text.clear()
+            binding.btnClearSurname.visibility = View.GONE
+        }
+    }
+
+    private fun editTextCleanNumberPhone() {
+        binding.btnClearNumberPhone.visibility = View.VISIBLE
+        binding.btnClearNumberPhone.setOnClickListener {
+            binding.etInputNumberPhone.text?.clear()
+            binding.btnClearNumberPhone.visibility = View.GONE
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

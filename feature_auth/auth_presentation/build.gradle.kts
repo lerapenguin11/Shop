@@ -37,6 +37,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -55,4 +58,11 @@ dependencies {
     kapt(DaggerHilt.hiltAndroidCompiler)
     kapt(DaggerHilt.hiltCompiler)
     implementation(Coroutines.kotlin_stdlib)
+    implementation(Coroutines.lifecycle_viewmodel)
+    implementation(Coroutines.lifecycle_livedata)
+    implementation(Coroutines.coroutineCore)
+    implementation(Coroutines.coroutineAndroid)
+    implementation(CoroutinesLifecycleScope.lifecycleViewModel)
+    implementation(CoroutinesLifecycleScope.lifeCycleRuntime)
+    implementation (ViewModelDelegate.viewModelDeligate)
 }

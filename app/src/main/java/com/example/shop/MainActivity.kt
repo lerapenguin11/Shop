@@ -3,6 +3,7 @@ package com.example.shop
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.auth_presentation.AuthFragment
 import com.example.home_presentation.HomeFragment
 import com.example.navigation.Navigator
@@ -25,7 +26,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateToNextFragment() {
+        hideBottomNavigationView()
         navigator = Navigator(fragmentManager = supportFragmentManager)
         navigator.navigateToFragmentAddBackStack(AuthFragment())
+    }
+
+    fun hideBottomNavigationView() {
+        binding.bottomNavigationView.visibility = View.GONE
+    }
+
+    fun showBottomNavigationView() {
+        binding.bottomNavigationView.visibility = View.VISIBLE
     }
 }
