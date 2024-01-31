@@ -47,6 +47,12 @@ android {
 
 dependencies {
     /*implementation(project(":common:common_utils"))*/
+    implementation(project(":feature_auth:auth_presentation"))
+    implementation(project(":feature_home:home_presentation"))
+    implementation(project(":feature_catalog:catalog_presentation"))
+    implementation(project(":feature_basket:basket_presentation"))
+    implementation(project(":feature_stocks:stocks_presentation"))
+    implementation(project(":feature_profile:profile_presentation"))
 
     implementation(Deps.core)
     implementation(Deps.appCompat)

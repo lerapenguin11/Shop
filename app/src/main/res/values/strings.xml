@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Shop</string>
+    <string name="title_home">Главная</string>
+    <string name="title_catalog">Каталог</string>
+    <string name="title_basket">Корзина</string>
+    <string name="title_stocks">Акции</string>
+    <string name="title_profile">Профиль</string>
 </resources>

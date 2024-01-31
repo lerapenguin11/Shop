@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="@string/title_home"
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"/>
+    <item
+        android:title="@string/title_catalog"
+        android:id="@+id/catalog"
+        android:enabled="true"
+        android:icon="@drawable/ic_catalog"/>
+    <item
+        android:title="@string/title_basket"
+        android:id="@+id/basket"
+        android:enabled="true"
+        android:icon="@drawable/ic_basket"/>
+
+    <item
+        android:title="@string/title_stocks"
+        android:id="@+id/stocks"
+        android:enabled="true"
+        android:icon="@drawable/ic_stocks"/>
+    <item
+        android:title="@string/title_profile"
+        android:id="@+id/profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_profile"/>
+</menu>
