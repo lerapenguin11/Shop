@@ -43,4 +43,5 @@ dependencies {
     api(Navigation.nav_features)
     api(Navigation.nav_fragment)
     api(Navigation.nav_ui)
+    implementation(Libraries.santalu_maskara)
 }
