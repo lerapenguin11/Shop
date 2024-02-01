@@ -1,6 +1,9 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id ("com.google.dagger.hilt.android")
+    id ("kotlin-kapt")
+    id ("kotlin-android")
 }
 
 android {
@@ -33,11 +36,18 @@ android {
 }
 
 dependencies {
+    implementation(project((":feature_auth:auth_domain")))
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(Deps.core)
+    implementation(Deps.appCompat)
+    implementation(Deps.androidMaterial)
+    androidTestImplementation(AndroidTestImplementation.junit)
+    androidTestImplementation(AndroidTestImplementation.espresso)
+    testImplementation(TestImplementation.junit)
+    implementation(DaggerHilt.hilt)
+    kapt(DaggerHilt.hiltAndroidCompiler)
+    kapt(DaggerHilt.hiltCompiler)
+    implementation(Coroutines.kotlin_stdlib)
+    implementation(Room.room)
+    kapt(Room.roomCompiler)
 }

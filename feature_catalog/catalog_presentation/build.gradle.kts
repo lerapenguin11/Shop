@@ -1,6 +1,9 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id ("com.google.dagger.hilt.android")
+    id ("kotlin-kapt")
+    id ("kotlin-android")
 }
 
 android {
@@ -30,9 +33,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
+    implementation(project(":navigation"))
 
     implementation(Deps.core)
     implementation(Deps.appCompat)
@@ -43,4 +50,15 @@ dependencies {
     api(Navigation.nav_features)
     api(Navigation.nav_fragment)
     api(Navigation.nav_ui)
+    implementation(DaggerHilt.hilt)
+    kapt(DaggerHilt.hiltAndroidCompiler)
+    kapt(DaggerHilt.hiltCompiler)
+    implementation(Coroutines.kotlin_stdlib)
+    implementation(Coroutines.lifecycle_viewmodel)
+    implementation(Coroutines.lifecycle_livedata)
+    implementation(Coroutines.coroutineCore)
+    implementation(Coroutines.coroutineAndroid)
+    implementation(CoroutinesLifecycleScope.lifecycleViewModel)
+    implementation(CoroutinesLifecycleScope.lifeCycleRuntime)
+    implementation (ViewModelDelegate.viewModelDeligate)
 }

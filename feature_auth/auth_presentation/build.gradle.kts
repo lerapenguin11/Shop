@@ -43,12 +43,16 @@ android {
 }
 
 dependencies {
+    implementation(project(":feature_auth:auth_domain"))
+    implementation(project(":navigation"))
+    implementation(project(":feature_catalog:catalog_presentation"))
 
     implementation(Deps.core)
     implementation(Deps.appCompat)
     implementation(Deps.androidMaterial)
     androidTestImplementation(AndroidTestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.espresso)
+    testImplementation(TestImplementation.junit)
     implementation(Deps.fragment)
     api(Navigation.nav_features)
     api(Navigation.nav_fragment)

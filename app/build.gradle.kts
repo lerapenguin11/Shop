@@ -53,6 +53,8 @@ dependencies {
     implementation(project(":feature_basket:basket_presentation"))
     implementation(project(":feature_stocks:stocks_presentation"))
     implementation(project(":feature_profile:profile_presentation"))
+    implementation(project(":feature_auth:auth_domain"))
+    implementation(project(":feature_auth:auth_data"))
     implementation(project(":navigation"))
 
     implementation(Deps.core)
@@ -70,4 +72,6 @@ dependencies {
     api(Navigation.nav_features)
     api(Navigation.nav_fragment)
     api(Navigation.nav_ui)
+    implementation(Room.room)
+    kapt(Room.roomCompiler)
 }

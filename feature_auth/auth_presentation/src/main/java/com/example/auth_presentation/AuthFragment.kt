@@ -1,5 +1,6 @@
 package com.example.auth_presentation
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,18 +8,33 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.auth_domain.entity.User
 import com.example.auth_presentation.databinding.FragmentAuthBinding
 import com.example.auth_presentation.viewmodel.AuthViewModel
+import com.example.catalog_presentation.CatalogFragment
+import com.example.navigation.NavigationUtils
+import com.example.navigation.Navigator
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class AuthFragment : Fragment() {
     private var _binding: FragmentAuthBinding? = null
     private val binding get() = _binding!!
+
     private val viewModel: AuthViewModel by viewModels()
+    @Inject
+    lateinit var navigator : Navigator
+    @Inject
+    lateinit var navigationUtils: NavigationUtils
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requireActivity().setTheme(R.style.AppTheme_NoActionBar)
     }
 
     override fun onCreateView(
@@ -93,7 +109,14 @@ class AuthFragment : Fragment() {
     private fun enableBtEnter() {
         binding.btEnter.isEnabled = true
         binding.btEnter.setOnClickListener {
-            Toast.makeText(requireContext(), "НАЖАЛИ", Toast.LENGTH_LONG).show()
+            viewModel.insertUser(User(
+                name = binding.etInputName.text.toString(),
+                surname = binding.etInputSurname.text.toString(),
+                numberPhone = binding.etInputNumberPhone.text.toString()
+            ))
+            viewModel.saveCode(CODE)
+            navigator = Navigator(fragmentManager = fragmentManager)
+            navigator.navigateToFragmentDeleteBackStack(CatalogFragment())
         }
     }
 
@@ -143,8 +166,16 @@ class AuthFragment : Fragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        requireActivity().setTheme(R.style.Theme_Shop)
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object{
+        private const val CODE = 1
     }
 }

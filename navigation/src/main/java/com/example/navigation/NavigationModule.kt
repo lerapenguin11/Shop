@@ -1,5 +1,7 @@
 package com.example.navigation
 
+import android.content.Context
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import dagger.Module
@@ -18,11 +20,16 @@ object NavigationModule {
 
     @Provides
     fun provideNavigator(fragmentManager: FragmentManager): Navigator {
-        return Navigator(fragmentManager)
+        return Navigator(fragmentManager = fragmentManager)
     }
 
     @Provides
     fun provideAppCompatActivity(): AppCompatActivity {
         return AppCompatActivity()
+    }
+
+    @Provides
+    fun provideNavigationUtils(): NavigationUtils {
+        return NavigationUtils()
     }
 }
