@@ -37,7 +37,7 @@ public class MainActivity : AppCompatActivity() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 
         navigation()
-        binding.bottomNavigationView.selectedItemId = R.id.catalog
+        binding.bottomNavigationView.selectedItemId = R.id.home
 
         supportFragmentManager.addFragmentOnAttachListener { fragmentManager, fragment ->
             if (fragment !is AuthFragment) {

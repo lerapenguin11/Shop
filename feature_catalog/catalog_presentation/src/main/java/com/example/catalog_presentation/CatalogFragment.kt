@@ -35,7 +35,6 @@ class CatalogFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        showBottomNavigationBar()
     }
 
     @SuppressLint("ResourceType")
